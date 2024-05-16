@@ -1,0 +1,27 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50 # Hz
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    effort_controllers:
+      type: effort_controllers/JointGroupEffortController
+      pid: {p: 1, i: 1, d: 1}
+
+
+effort_controllers:
+  ros__parameters:
+    # joints:
+    # - fork_joint
+    command_interfaces:
+    - effort
+    state_interfaces:
+    - position
+    - velocity
+    - effort
+
+joint_state_broadcaster:
+  ros__parameters:
+    extra_joints: ["base_joint", "wheel_left_joint", "wheel_right_joint","caster_back_right_joint","caster_back_left_joint"]
